@@ -13,11 +13,11 @@ module "user" {
   image_id = data.aws_ami.devops_ami.id
   security_group_id = data.aws_ssm_parameter.user_sg_id.value
   user_data = filebase64("${path.module}/user.sh")
-  launch_template_tags = vari.launch_template_tags
+  launch_template_tags = var.launch_template_tags
 
   #autoscaling
   vpc_zone_identifier = split(",",data.aws_ssm_parameter.private_subnet_ids.value)
-  tag = vari.autoscaling_tags
+  tag = var.autoscaling_tags
 
   #autoscalingpolicy, I am good with optional params
 
