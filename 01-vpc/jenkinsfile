@@ -17,9 +17,9 @@ pipeline {
         stage('plan') {
             steps {
               sh '''
-                01-vpc
                 ls -ltr
                 pwd
+                cd 01-vpc
                 terraform plan
               '''   
             }
@@ -39,7 +39,7 @@ pipeline {
                     ls -ltr
                     cd 01-vpc
                     terraform apply -auto-approve
-                   ''' 
+                ''' 
             }
         }
     }
